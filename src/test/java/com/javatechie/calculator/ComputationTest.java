@@ -7,22 +7,30 @@ public class ComputationTest {
 
     @Test
     public void testComputeAdd() {
-        assertEquals(5, Computation.compute(2, 3, "+"));
+        int result = Computation.compute(2, 3, "+");
+        int expected = 5;
+        assertEquals("Test failed: 2 + 3 should equal 5", expected, result);
     }
 
     @Test
     public void testComputeSubtract() {
-        assertEquals(1, Computation.compute(3, 2, "-"));
+        int result = Computation.compute(3, 2, "-");
+        int expected = 1;
+        assertEquals("Test failed: 3 - 2 should equal 1", expected, result);
     }
 
     @Test
     public void testComputeMultiply() {
-        assertEquals(6, Computation.compute(2, 3, "*"));
+        int result = Computation.compute(2, 3, "*");
+        int expected = 6;
+        assertEquals("Test failed: 2 * 3 should equal 6", expected, result);
     }
 
     @Test
     public void testComputeDivide() {
-        assertEquals(2, Computation.compute(6, 3, "/"));
+        int result = Computation.compute(6, 3, "/");
+        int expected = 2;
+        assertEquals("Test failed: 6 / 3 should equal 2", expected, result);
     }
 
     @Test
@@ -31,7 +39,7 @@ public class ComputationTest {
             Computation.compute(2, 3, "%");
             fail("Expected IllegalArgumentException");
         } catch (IllegalArgumentException e) {
-            // OK
+            assertTrue("Error message mismatch", e.getMessage().contains("Operator must be one of +, -, *, /"));
         }
     }
 
@@ -41,7 +49,7 @@ public class ComputationTest {
             Computation.compute(1, 0, "/");
             fail("Expected IllegalArgumentException");
         } catch (IllegalArgumentException e) {
-            // OK
+            assertTrue("Error message mismatch", e.getMessage().contains("Cannot divide by zero"));
         }
     }
 
@@ -51,7 +59,7 @@ public class ComputationTest {
             Computation.compute(40000, 2, "+");
             fail("Expected IllegalArgumentException");
         } catch (IllegalArgumentException e) {
-            // OK
+            assertTrue("Error message mismatch", e.getMessage().contains("Operands must be between -32768 and 32767"));
         }
     }
 }
