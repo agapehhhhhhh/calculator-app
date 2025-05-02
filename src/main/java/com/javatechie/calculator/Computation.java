@@ -39,7 +39,7 @@ public class Computation {
         }
 
         if (operator.equals("/") && a == 0) {
-            throw new IllegalArgumentException("Cannot divide zero by zero");
+            throw new IllegalArgumentException("Cannot divide zero");
         }
     }
 }
