@@ -6,13 +6,30 @@ import static org.junit.Assert.*;
 public class SubtractionTest {
 
     @Test
-    public void subtraction_shouldReturnCorrectResult() {
+    public void testPositiveSubtraction() {
         Subtraction op = new Subtraction();
-        int a = 10, b = 4;
-        int expected = 6;
+        int actual = op.calculate(250, 254);
+        assertEquals("250 - 254 should equal -4", -4, actual);
+    }
 
-        int actual = op.calculate(a, b);
+    @Test
+    public void testNegativeSubtraction() {
+        Subtraction op = new Subtraction();
+        int actual = op.calculate(-125, -323);
+        assertEquals("-125 - (-323) should equal 198", 198, actual);
+    }
 
-        assertEquals("10 - 4 should equal 6", expected, actual);
+    @Test
+    public void testSubtractionWithZero() {
+        Subtraction op = new Subtraction();
+        int actual = op.calculate(223, 0);
+        assertEquals("223 - 0 should equal 223", 223, actual);
+    }
+
+    @Test
+    public void testPositiveAndNegativeSubtraction() {
+        Subtraction op = new Subtraction();
+        int actual = op.calculate(122, -133);
+        assertEquals("122 - (-133) should equal 255", 255, actual);
     }
 }
