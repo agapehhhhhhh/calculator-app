@@ -18,9 +18,6 @@ public class Computation {
         validateInput(a, b, operator);
 
         Operation operation = operations.get(operator);
-        if (operation == null) {
-            throw new IllegalArgumentException("Unsupported operator: " + operator);
-        }
 
         return operation.calculate(a, b);
     }
@@ -31,7 +28,7 @@ public class Computation {
         }
 
         if (!operations.containsKey(operator)) {
-            throw new IllegalArgumentException("Operator must be one of +, -, *, /");
+            throw new IllegalArgumentException("Operator '" + operator + "' is not valid. Operator must be one of +, -, *, /");
         }
 
         if (operator.equals("/") && b == 0) {

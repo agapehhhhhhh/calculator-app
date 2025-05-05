@@ -6,7 +6,6 @@ import static org.junit.Assert.assertTrue;
 
 public class ComputationTest {
 
-
     @Test
     public void computeAddition_shouldReturnCorrectResult() {
         // (1) setup
@@ -116,6 +115,19 @@ public class ComputationTest {
             fail("Expected IllegalArgumentException");
         } catch (IllegalArgumentException e) {
             assertTrue(e.getMessage().contains("Operator must be one of"));
+        }
+    }
+
+    @Test
+    public void computeDivisionZero_shouldThrowException() {
+        int a = 0, b = 1;
+        String op = "/";
+
+        try {
+            Computation.compute(a, b, op);
+            fail("Expected IllegalArgumentException");
+        } catch (IllegalArgumentException e) {
+            assertTrue("Error message mismatch", e.getMessage().contains("Cannot divide zero"));
         }
     }
 }
